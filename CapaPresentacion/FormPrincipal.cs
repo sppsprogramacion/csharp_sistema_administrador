@@ -1,0 +1,99 @@
+﻿using CapaPresentacion.FuncionesGenerales;
+using CommonCache;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CapaPresentacion
+{
+    public partial class FormPrincipal : Form
+    {
+        public FormPrincipal()
+        {
+            InitializeComponent();
+
+
+            bool esAdmin = CurrentUser.Instance.roles != null && CurrentUser.Instance.roles.Contains("restriccionAdmin");
+
+            if (esAdmin)
+            {
+                btnAdministrarUsuarios.Visible = true;
+            }
+            else
+            {
+                btnAdministrarUsuarios.Visible = false;
+            }
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            FormularioAyudas.AjustarFormulario(this);
+            this.ControlBox = false;
+
+            lblEncabezado.Text = lblEncabezado.Text + " - " + CurrentUser.Instance.organismo;
+            lblUsuario.Text = CurrentUser.Instance.nombre.ToUpper() + " " + CurrentUser.Instance.apellido.ToUpper();
+        }
+
+        private void btnVerVisitas_Click(object sender, EventArgs e)
+        {
+            FormVisitas formVisitas = new FormVisitas();
+
+            formVisitas.ShowDialog();
+        }
+
+        private void btnCerrarSistema_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnProhibicionesAnticipadas_Click(object sender, EventArgs e)
+        {
+            FormProhibicionesAnticipadas formProhibicionesAnticipadas = new FormProhibicionesAnticipadas();
+
+            formProhibicionesAnticipadas.ShowDialog();
+        }
+
+        
+
+        private void btnExcepcionesIngreso_Click(object sender, EventArgs e)
+        {
+            FormExcepcionesIngreso formExepcionesIngreso = new FormExcepcionesIngreso();
+
+            formExepcionesIngreso.ShowDialog();
+        }
+
+        private void btnSabanaVisitasInternos_Click(object sender, EventArgs e)
+        {
+            FormSabanaBuscar formInternosBuscar = new FormSabanaBuscar();
+
+            formInternosBuscar.ShowDialog();
+        }
+
+        private void btnConsultasProhibiciones_Click(object sender, EventArgs e)
+        {
+            FormConsultaProhibiciones formConsultas = new FormConsultaProhibiciones();
+
+            formConsultas.ShowDialog();
+        }
+        
+        private void picUsuario_Click(object sender, EventArgs e)
+        {
+            FormCuentaUsuario formCuentaUsuario = new FormCuentaUsuario();
+
+            formCuentaUsuario.ShowDialog();
+        }
+
+        private void btnAdministrarUsuarios_Click(object sender, EventArgs e)
+        {
+
+            FormAdministrarUsuarios formAdministrarUsuarios = new FormAdministrarUsuarios();
+            formAdministrarUsuarios.ShowDialog();
+        }
+    }
+}
