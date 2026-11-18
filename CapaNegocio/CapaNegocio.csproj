@@ -51,6 +51,7 @@
     <Compile Include="NInterno.cs" />
     <Compile Include="NMenorACargo.cs" />
     <Compile Include="NNovedadCiudadano.cs" />
+    <Compile Include="NOrganismo.cs" />
     <Compile Include="NParentesco.cs" />
     <Compile Include="NProhibicionVisita.cs" />
     <Compile Include="NProhibicionVisitaAnticipada.cs" />

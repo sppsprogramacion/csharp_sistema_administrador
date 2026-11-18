@@ -859,7 +859,8 @@ namespace CapaPresentacion
             }
         }
 
-        //FIN BOTON IMPRIMIR VINCULOS........................
+        //FIN BOTON IMPRIMIR VINCULOS
+        //........................
 
 
         //BOTON PROHIBIR PARENTESCO
@@ -878,6 +879,8 @@ namespace CapaPresentacion
             
         }
         //FIN BOTON PROHIBIR PARENTESCO
+        //-------------------------------------------------------------
+
 
         //BOTON LEVANTAR PROHIBICION PARENTESCO
         private void btnLevantarProhibirParent_Click(object sender, EventArgs e)

@@ -23,8 +23,8 @@ namespace CapaNegocio
         //FIN CAMBIAR MI PASSWORD
         //..........................................................................................
 
-        //QUITAR USUARIO DEL SISTEMA
-        public async Task<(bool, string error)> DeshabilitarUsuarioDelSistema(int idUsuario)
+        //DESHABILITAR USUARIO
+        public async Task<(bool, string error)> DeshabilitarUsuario(int idUsuario)
         {
             IUsuarioDao usuarioDao = new UsuarioDaoImplement();
 
@@ -32,8 +32,23 @@ namespace CapaNegocio
 
             return (edicionResponse, error);
         }
-        //FIN QUITAR USUARIO DEL SISTEMA
+        //FIN DESHABILITAR USUARIO
         //..........................................................................................
+
+
+        //DESHABILITAR ROL DEL USUARIO
+        public async Task<(bool, string error)> DeshabilitarRolDelUsuario(int idUsuarioRol)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement();
+
+            (bool edicionResponse, string error) = await usuarioDao.DeshabilitarRolDelUsuario(idUsuarioRol);
+
+            return (edicionResponse, error);
+        }
+        //FIN DESHABILITAR ROL DEL USUARIO
+        //..........................................................................................
+
+
 
 
         //BUSCAR USUARIO MI CUENTA
@@ -102,6 +117,20 @@ namespace CapaNegocio
             return (listaUsuarios, errorResponse);
         }
         //FIN LISTA USUARIOS INACTIVOS
+        //...........................................................................
+
+
+        //LISTA ROLES DEL USUARIO
+        public async Task<(List<DUsuarioRol>, string error)> ListaUsuarioRoles(int idUsuario)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement();
+
+            (List<DUsuarioRol> listaUsuarioRoles, string errorResponse) = await usuarioDao.ListaUsuarioRolesXUsuario(idUsuario);
+
+
+            return (listaUsuarioRoles, errorResponse);
+        }
+        //FIN LISTA ROLES DEL USUARIO
         //...........................................................................
 
 

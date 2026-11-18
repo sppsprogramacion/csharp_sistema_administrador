@@ -69,12 +69,15 @@
     <Compile Include="DProvincia.cs" />
     <Compile Include="DRegistroDiario.cs" />
     <Compile Include="DResponseEditar.cs" />
+    <Compile Include="DRol.cs" />
     <Compile Include="DSectoresDestino.cs" />
     <Compile Include="DSexo.cs" />
     <Compile Include="DEstadoCivil.cs" />
+    <Compile Include="DSistema.cs" />
     <Compile Include="DTipoAcceso.cs" />
     <Compile Include="DTipoAtencion.cs" />
     <Compile Include="DUsuario.cs" />
+    <Compile Include="DUsuarioRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DVisitaInterno.cs" />
   </ItemGroup>

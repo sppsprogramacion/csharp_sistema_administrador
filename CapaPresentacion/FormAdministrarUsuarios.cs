@@ -21,12 +21,24 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void FormAdministrarUsuarios_Load(object sender, EventArgs e)
+        private  async void FormAdministrarUsuarios_Load(object sender, EventArgs e)
         {
             //// Ajustar el tamaño del formulario            
             FormularioAyudas.AjustarFormulario(this);
 
+            //CARGAR COMBO ORGANISMO
+            NOrganismo nOrganismo = new NOrganismo();
+            (List<DOrganismo> listaOrganismoResponse, string errorResponse) = await nOrganismo.RetornarOrganismoDestinoTodos();
 
+            if (listaOrganismoResponse == null)
+            {
+                MessageBox.Show("Advertencia al cargar lista de Organismos: " + errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            cmbOrganismos.ValueMember = "id_organismo";
+            cmbOrganismos.DisplayMember = "organismo";
+            cmbOrganismos.DataSource = listaOrganismoResponse;
         }
 
         
@@ -67,9 +79,10 @@ namespace CapaPresentacion
 
         private async void btnVerActivosPorOrganismo_Click(object sender, EventArgs e)
         {
+            int idOrganismo = Convert.ToInt32(cmbOrganismos.SelectedValue);
             NUsuario nUsuario = new NUsuario();
             this.Enabled = false;
-            (List<DUsuario> listaUsuariosResponse, string errorResponse) = await nUsuario.ListaUsuariosActivosXOrganismo(4);
+            (List<DUsuario> listaUsuariosResponse, string errorResponse) = await nUsuario.ListaUsuariosActivosXOrganismo(idOrganismo);
             this.Enabled = true;
 
             if (listaUsuariosResponse == null)
@@ -83,9 +96,9 @@ namespace CapaPresentacion
 
 
 
-        private void dtgvProhibiciones_KeyDown(object sender, KeyEventArgs e)
+        private async void dtgvProhibiciones_KeyDown(object sender, KeyEventArgs e)
         {
-            //AL PRESIONAR ENTER MOSTRAR EL TRAMITE
+            //AL PRESIONAR ENTER MOSTRAR
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
@@ -99,8 +112,7 @@ namespace CapaPresentacion
                     {
                         txtIdUsuario.Text = idUsuario.ToString();
                         txtRoles.Text = dtgUsuarios.CurrentRow.Cells["Roles"].Value.ToString();
-                        txtApellido.Text = dtgUsuarios.CurrentRow.Cells["Apellido"].Value.ToString();
-                        txtNombre.Text = dtgUsuarios.CurrentRow.Cells["Nombre"].Value.ToString();
+                        txtApellidoNombre.Text = dtgUsuarios.CurrentRow.Cells["ApellidoNombre"].Value.ToString();
                         txtDni.Text = dtgUsuarios.CurrentRow.Cells["Dni"].Value.ToString();
                         txtLegajo.Text = dtgUsuarios.CurrentRow.Cells["Legajo"].Value.ToString();
                         txtSexo.Text = dtgUsuarios.CurrentRow.Cells["Sexo"].Value.ToString();
@@ -108,13 +120,63 @@ namespace CapaPresentacion
                         txtTelefono.Text = dtgUsuarios.CurrentRow.Cells["Telefono"].Value.ToString();
                         txtOrganismo.Text = dtgUsuarios.CurrentRow.Cells["Organismo"].Value.ToString();
 
+
+                        //CARGAR ROLES
+
+                        if (this.txtIdUsuario.Text == string.Empty)
+                        {
+                            MessageBox.Show("Debe seleccionar un usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            NUsuario nUsuario = new NUsuario();
+                            this.Enabled = false;
+                            (List<DUsuarioRol> listaUsuarioRolesRespnse, string errorResponse) = await nUsuario.ListaUsuarioRoles(Convert.ToInt32(this.txtIdUsuario.Text));
+                            this.Enabled = true;
+
+                            if (listaUsuarioRolesRespnse == null)
+                            {
+                                MessageBox.Show(errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+
+
+                            var datosFiltrados = listaUsuarioRolesRespnse
+                            .Select(c => new
+                            {
+                                Id = c.id_usuario_rol,
+                                Rol = c.rol_id,
+                                FechaAlta = c.fecha_alta,
+                                RolActivo = c.activo
+
+                            })
+                            .ToList();
+
+                            dgvRoles.DataSource = datosFiltrados;
+
+                            if (listaUsuarioRolesRespnse.Count == 0)
+                            {
+                                MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                            else
+                            {
+
+                                dgvRoles.Columns[0].Width = 50;
+                                dgvRoles.Columns[1].Width = 150;
+                                dgvRoles.Columns[2].Width = 80;
+                                dgvRoles.Columns[2].Width = 80;
+                            }
+                        }
+
                     }
                     else
                     {
-                        MessageBox.Show("Debe seleccionar una usuario.", "Restricción Visitas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Debe seleccionar una usuario.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
+        
         }
 
 
@@ -131,7 +193,7 @@ namespace CapaPresentacion
             try
             {
                 this.Enabled = false;
-                (bool respuestaEditar, string errorResponse) = await nUsuario.DeshabilitarUsuarioDelSistema(Convert.ToInt32(txtIdUsuario.Text));
+                (bool respuestaEditar, string errorResponse) = await nUsuario.DeshabilitarUsuario(Convert.ToInt32(txtIdUsuario.Text));
                 this.Enabled = true;
 
                 if (respuestaEditar)
@@ -151,8 +213,7 @@ namespace CapaPresentacion
 
 
                     txtIdUsuario.Text = string.Empty;
-                    txtApellido.Text = string.Empty;
-                    txtNombre.Text = string.Empty;
+                    txtApellidoNombre.Text = string.Empty;
                     txtDni.Text = string.Empty;
                     txtLegajo.Text = string.Empty;
                     txtSexo.Text = string.Empty;
@@ -192,8 +253,7 @@ namespace CapaPresentacion
                 .Select(c => new
                 {
                     Id = c.id_usuario,
-                    Apellido = c.apellido,
-                    Nombre = c.nombre,
+                    ApellidoNombre = c.apellido + " " + c.nombre,
                     Dni = c.dni,
                     Legajo = c.legajo,
                     Sexo = c.sexo.sexo,
@@ -225,7 +285,119 @@ namespace CapaPresentacion
                 dtgUsuarios.Columns[8].Width = 180;
             }
         }
+
         //FIN METODO  PARA OBTENER LA LISTA DE USUARIOS DE RESTRICCION
         //............................................................................
+        private void dgvRoles_KeyDown(object sender, KeyEventArgs e)
+        {
+            //AL PRESIONAR ENTER MOSTRAR
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                if (dgvRoles.SelectedRows.Count > 0)
+                {
+                    int idUsuarioRol;
+                    idUsuarioRol = Convert.ToInt32(dtgUsuarios.CurrentRow.Cells["Id"].Value.ToString());
+
+                    if (idUsuarioRol > 0)
+                    {
+                        txtIdUsuarioRol.Text = idUsuarioRol.ToString();
+                        txtRol.Text = dgvRoles.CurrentRow.Cells["Rol"].Value.ToString();                        
+
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar un rol.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+
+        }
+
+        private async void btnQuitarRol_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIdUsuarioRol.Text))
+            {
+                MessageBox.Show("Debe seleccionar un rol.", "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            NUsuario nUsuario = new NUsuario();
+
+            try
+            {
+                this.Enabled = false;
+                (bool respuestaEditar, string errorResponse) = await nUsuario.DeshabilitarRolDelUsuario(Convert.ToInt32(txtIdUsuarioRol.Text));
+                this.Enabled = true;
+
+                if (respuestaEditar)
+                {
+                    MessageBox.Show("Se quito correctamente el rol del usuario", "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //CARGAR ROLES
+
+                    if (this.txtIdUsuario.Text == string.Empty)
+                    {
+                        MessageBox.Show("Debe seleccionar un usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        (List<DUsuarioRol> listaUsuarioRolesRespnse, string errorResponse2) = await nUsuario.ListaUsuarioRoles(Convert.ToInt32(this.txtIdUsuario.Text));
+                        this.Enabled = true;
+
+                        if (listaUsuarioRolesRespnse == null)
+                        {
+                            MessageBox.Show(errorResponse2, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+
+                        var datosFiltrados = listaUsuarioRolesRespnse
+                        .Select(c => new
+                        {
+                            Id = c.id_usuario_rol,
+                            Rol = c.rol_id,
+                            FechaAlta = c.fecha_alta,
+                            RolActivo = c.activo
+
+                        })
+                        .ToList();
+
+                        dgvRoles.DataSource = datosFiltrados;
+
+                        if (listaUsuarioRolesRespnse.Count == 0)
+                        {
+                            MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                        else
+                        {
+
+                            dgvRoles.Columns[0].Width = 50;
+                            dgvRoles.Columns[1].Width = 150;
+                            dgvRoles.Columns[2].Width = 80;
+                            dgvRoles.Columns[2].Width = 80;
+                        }
+                    }
+
+
+                    txtIdUsuarioRol.Text = string.Empty;
+                    txtRol.Text = string.Empty;
+
+                }
+                else
+                {
+                    MessageBox.Show(errorResponse, "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otros tipos de errores MySQL
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
