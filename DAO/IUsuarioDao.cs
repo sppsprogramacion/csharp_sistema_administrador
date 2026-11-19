@@ -9,6 +9,9 @@ namespace DAO
 {
     public interface IUsuarioDao
     {
+        Task<(DUsuario, string error)> CrearUsuario(string usuario);
+        Task<(DUsuarioRol, string error)> CrearRol(string usuarioRol);
+        Task<(bool, string error)> EditarUsuario(int id, string usuarioData);
 
         Task<(bool, string error)> DeshabilitarUsuario(int idUsuario);
         Task<(bool, string error)> DeshabilitarRolDelUsuario(int idUsuarioRol);

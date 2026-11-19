@@ -11,6 +11,29 @@ namespace CapaNegocio
 {
     public class NUsuario
     {
+
+        //CREAR USUARIO
+        public async Task<(DUsuario, string error)> CrearProhibicion(string usuarioData)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement(); 
+            (DUsuario usuarioREsponse, string errorResponse) = await usuarioDao.CrearUsuario(usuarioData);
+
+            return (usuarioREsponse, errorResponse);
+        }
+        //FIN CREAR USUARIO..................................
+
+        //EDITAR PROHIBICION
+        public async Task<(bool, string error)> EditarUsuario(int id, string prohibicioVisita)
+        {
+            IProhibicionVisitaDao prohibicionVisitaDao = new ProhibicinVisitaDaoImpl();
+
+            (bool prohibicionResponse, string error) = await prohibicionVisitaDao.EditarProhibicionVisita(id, prohibicioVisita);
+
+            return (prohibicionResponse, error);
+        }
+        //FIN EDITAR PROHIBICION..................................
+
+
         //CAMBIAR MI PASSWORD
         public async Task<(bool, string error)> CambiarMiPassword(string dataEditar)
         {

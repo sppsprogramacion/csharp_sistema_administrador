@@ -71,6 +71,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label1.Location = new System.Drawing.Point(246, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 16);
@@ -81,6 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(246, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
@@ -102,10 +104,10 @@
             // btnCerrarSistema
             // 
             this.btnCerrarSistema.BackColor = System.Drawing.Color.White;
-            this.btnCerrarSistema.FlatAppearance.BorderColor = System.Drawing.Color.Indigo;
+            this.btnCerrarSistema.FlatAppearance.BorderColor = System.Drawing.Color.DarkOrange;
             this.btnCerrarSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSistema.ForeColor = System.Drawing.Color.Indigo;
+            this.btnCerrarSistema.ForeColor = System.Drawing.Color.DarkOrange;
             this.btnCerrarSistema.Location = new System.Drawing.Point(248, 313);
             this.btnCerrarSistema.Name = "btnCerrarSistema";
             this.btnCerrarSistema.Size = new System.Drawing.Size(194, 40);
@@ -118,7 +120,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Indigo;
+            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label3.Location = new System.Drawing.Point(244, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(161, 25);
@@ -127,14 +129,14 @@
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.Indigo;
+            this.label4.BackColor = System.Drawing.Color.RoyalBlue;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(1, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(461, 30);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Sistema Restricción de Visitas";
+            this.label4.Text = "Sistema Administrador";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureLogoSpps

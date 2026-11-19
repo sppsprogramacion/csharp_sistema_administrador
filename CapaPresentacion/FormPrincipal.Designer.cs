@@ -59,23 +59,23 @@
             // 
             // lblEncabezado
             // 
-            this.lblEncabezado.BackColor = System.Drawing.Color.Indigo;
+            this.lblEncabezado.BackColor = System.Drawing.Color.RoyalBlue;
             this.lblEncabezado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEncabezado.ForeColor = System.Drawing.Color.White;
             this.lblEncabezado.Location = new System.Drawing.Point(1, 1);
             this.lblEncabezado.Name = "lblEncabezado";
             this.lblEncabezado.Size = new System.Drawing.Size(903, 29);
             this.lblEncabezado.TabIndex = 76;
-            this.lblEncabezado.Text = "RESTRICCION DE VISITAS";
+            this.lblEncabezado.Text = "SISTEMA ADMINISTRADOR";
             this.lblEncabezado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCerrarSistema
             // 
             this.btnCerrarSistema.BackColor = System.Drawing.Color.White;
-            this.btnCerrarSistema.FlatAppearance.BorderColor = System.Drawing.Color.Indigo;
+            this.btnCerrarSistema.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnCerrarSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSistema.ForeColor = System.Drawing.Color.Indigo;
+            this.btnCerrarSistema.ForeColor = System.Drawing.Color.Red;
             this.btnCerrarSistema.Location = new System.Drawing.Point(811, 549);
             this.btnCerrarSistema.Name = "btnCerrarSistema";
             this.btnCerrarSistema.Size = new System.Drawing.Size(93, 45);
@@ -103,7 +103,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.Indigo;
+            this.lblUsuario.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblUsuario.Location = new System.Drawing.Point(40, 574);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(50, 16);
@@ -173,7 +173,7 @@
             // 
             // picUsuario
             // 
-            this.picUsuario.Image = global::CapaPresentacion.Properties.Resources.usuario3;
+            this.picUsuario.Image = global::CapaPresentacion.Properties.Resources.usuario2;
             this.picUsuario.Location = new System.Drawing.Point(12, 569);
             this.picUsuario.Name = "picUsuario";
             this.picUsuario.Size = new System.Drawing.Size(25, 25);

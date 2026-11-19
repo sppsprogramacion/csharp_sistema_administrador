@@ -207,6 +207,12 @@
     <Compile Include="FormSabanaInternos.Designer.cs">
       <DependentUpon>FormSabanaInternos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUsuarioNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarioNuevo.Designer.cs">
+      <DependentUpon>FormUsuarioNuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVisitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     <EmbeddedResource Include="FormSabanaInternos.resx">
       <DependentUpon>FormSabanaInternos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarioNuevo.resx">
+      <DependentUpon>FormUsuarioNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVisitas.resx">
       <DependentUpon>FormVisitas.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +352,7 @@
     </None>
     <None Include="Resources\buscar.png" />
     <None Include="Resources\buscar2.png" />
+    <None Include="Resources\usuario21.png" />
     <Content Include="restriccion- icono.ico" />
     <Content Include="restriccion-icono.ico" />
     <Content Include="SqlServerTypes\readme.htm" />

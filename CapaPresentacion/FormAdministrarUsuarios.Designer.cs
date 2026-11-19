@@ -46,8 +46,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtOrganismo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtRoles = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.btnDeshabilitarUsuario = new System.Windows.Forms.Button();
@@ -57,13 +55,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnVerActivosPorOrganismo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvRoles = new System.Windows.Forms.DataGridView();
-            this.btnQuitarRol = new System.Windows.Forms.Button();
+            this.btnAgregarRol = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnQuitarRol = new System.Windows.Forms.Button();
             this.txtIdUsuarioRol = new System.Windows.Forms.TextBox();
+            this.dgvRoles = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.txtRol = new System.Windows.Forms.TextBox();
-            this.btnAgregarRol = new System.Windows.Forms.Button();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgUsuarios)).BeginInit();
@@ -234,8 +232,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtRoles);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtIdUsuario);
             this.groupBox1.Controls.Add(this.btnDeshabilitarUsuario);
@@ -259,26 +255,6 @@
             this.groupBox1.TabIndex = 109;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "USUARIO";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(63, 191);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 15);
-            this.label10.TabIndex = 114;
-            this.label10.Text = "ROLES";
-            // 
-            // txtRoles
-            // 
-            this.txtRoles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoles.Location = new System.Drawing.Point(66, 208);
-            this.txtRoles.Name = "txtRoles";
-            this.txtRoles.ReadOnly = true;
-            this.txtRoles.Size = new System.Drawing.Size(147, 21);
-            this.txtRoles.TabIndex = 113;
             // 
             // label2
             // 
@@ -358,9 +334,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(565, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 15);
+            this.label11.Size = new System.Drawing.Size(81, 15);
             this.label11.TabIndex = 114;
-            this.label11.Text = "ORGANISMOS";
+            this.label11.Text = "ORGANISMO";
             // 
             // btnVerActivosPorOrganismo
             // 
@@ -393,16 +369,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ROLES DEL USUARIO";
             // 
-            // dgvRoles
+            // btnAgregarRol
             // 
-            this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRoles.Location = new System.Drawing.Point(6, 19);
-            this.dgvRoles.Name = "dgvRoles";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRoles.Size = new System.Drawing.Size(478, 119);
-            this.dgvRoles.TabIndex = 70;
-            this.dgvRoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRoles_KeyDown);
+            this.btnAgregarRol.BackColor = System.Drawing.Color.Indigo;
+            this.btnAgregarRol.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAgregarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRol.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarRol.Location = new System.Drawing.Point(163, 191);
+            this.btnAgregarRol.Name = "btnAgregarRol";
+            this.btnAgregarRol.Size = new System.Drawing.Size(127, 40);
+            this.btnAgregarRol.TabIndex = 119;
+            this.btnAgregarRol.Text = "AGREGAR ROL";
+            this.btnAgregarRol.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(4, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 15);
+            this.label5.TabIndex = 118;
+            this.label5.Text = "ID USUARIO-ROL:";
             // 
             // btnQuitarRol
             // 
@@ -418,16 +407,6 @@
             this.btnQuitarRol.UseVisualStyleBackColor = false;
             this.btnQuitarRol.Click += new System.EventHandler(this.btnQuitarRol_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 141);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 15);
-            this.label5.TabIndex = 118;
-            this.label5.Text = "ID USUARIO-ROL:";
-            // 
             // txtIdUsuarioRol
             // 
             this.txtIdUsuarioRol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -437,6 +416,17 @@
             this.txtIdUsuarioRol.ReadOnly = true;
             this.txtIdUsuarioRol.Size = new System.Drawing.Size(117, 21);
             this.txtIdUsuarioRol.TabIndex = 117;
+            // 
+            // dgvRoles
+            // 
+            this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoles.Location = new System.Drawing.Point(6, 19);
+            this.dgvRoles.Name = "dgvRoles";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRoles.Size = new System.Drawing.Size(478, 119);
+            this.dgvRoles.TabIndex = 70;
+            this.dgvRoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRoles_KeyDown);
             // 
             // label12
             // 
@@ -457,20 +447,6 @@
             this.txtRol.ReadOnly = true;
             this.txtRol.Size = new System.Drawing.Size(160, 21);
             this.txtRol.TabIndex = 115;
-            // 
-            // btnAgregarRol
-            // 
-            this.btnAgregarRol.BackColor = System.Drawing.Color.Indigo;
-            this.btnAgregarRol.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAgregarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRol.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarRol.Location = new System.Drawing.Point(163, 191);
-            this.btnAgregarRol.Name = "btnAgregarRol";
-            this.btnAgregarRol.Size = new System.Drawing.Size(127, 40);
-            this.btnAgregarRol.TabIndex = 119;
-            this.btnAgregarRol.Text = "AGREGAR ROL";
-            this.btnAgregarRol.UseVisualStyleBackColor = false;
             // 
             // btnNuevoUsuario
             // 
@@ -541,8 +517,6 @@
         private System.Windows.Forms.Button btnDeshabilitarUsuario;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIdUsuario;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtRoles;
         private System.Windows.Forms.Button btnVerUsuariosActivos;
         private System.Windows.Forms.Button btnVerUsuariosInactivos;
         private System.Windows.Forms.ComboBox cmbOrganismos;
