@@ -61,67 +61,76 @@ namespace CapaPresentacion
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            NProhibicionVisita nProhibicionVisita = new NProhibicionVisita();
-
-
-            //NUEVO
+            NUsuario nUsuario = new NUsuario();
+                        
            
-                //limpiar errores de provider
-                //errorProvider.Clear();
+            //limpiar errores de provider
+            //errorProvider.Clear();
 
-                //validacion de formulario
-                //var datosFormulario = new ProhibicionDatos
-                //{
-                //    txtIdCiudadano = txtIdCiudadano.Text,
-                //    txtDisposicion = txtDisposicion.Text,
-                //    txtDetalle = txtDetalle.Text,
-                //    dtpFechaInicio = dtpFechaInicio.Value,
-                //    dtpFechaFin = dtpFechaFin.Value,
-                //};
+            //validacion de formulario
+            //var datosFormulario = new ProhibicionDatos
+            //{
+            //    txtIdCiudadano = txtIdCiudadano.Text,
+            //    txtDisposicion = txtDisposicion.Text,
+            //    txtDetalle = txtDetalle.Text,
+            //    dtpFechaInicio = dtpFechaInicio.Value,
+            //    dtpFechaFin = dtpFechaFin.Value,
+            //};
 
-                //var validator = new ProhibicionNuevaValidator();
-                //var result = validator.Validate(datosFormulario);
+            //var validator = new ProhibicionNuevaValidator();
+            //var result = validator.Validate(datosFormulario);
 
-                //if (!result.IsValid)
-                //{
-                //    MessageBox.Show("Complete correctamente los campos del formulario", "Restriccion Visitas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    foreach (var failure in result.Errors)
-                //    {
+            //if (!result.IsValid)
+            //{
+            //    MessageBox.Show("Complete correctamente los campos del formulario", "Restriccion Visitas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    foreach (var failure in result.Errors)
+            //    {
 
-                //        Control control = Controls.Find(failure.PropertyName, true)[0];
-                //        errorProvider.SetError(control, failure.ErrorMessage);
-                //    }
-                //    return;
-                //}
+            //        Control control = Controls.Find(failure.PropertyName, true)[0];
+            //        errorProvider.SetError(control, failure.ErrorMessage);
+            //    }
+            //    return;
+            //}
 
-                //enviar datos si son correctos
-                var data = new
-                {
-                    apellido = txtApellido.Text,
-                    nombre = txtNombre.Text,
-                    dni = Convert.ToInt32(txtDni.Text),
-                    legajo = Convert.ToInt32(txtDni.Text),
-                    
-                };
+            //enviar datos si son correctos
+            var data = new
+            {
+                apellido = txtApellido.Text.Trim(),
+                nombre = txtNombre.Text.Trim(),
+                dni = Convert.ToInt32(txtDni.Text),
+                legajo = Convert.ToInt32(txtDni.Text),
+                sexo_id = Convert.ToInt32(cmbSexo.SelectedValue),
+                telefono = txtTelefono.Text.Trim(),
+                email = txtEmail.Text.Trim(),
+                organismo_id = Convert.ToInt32(cmbOrganismos.SelectedValue),
+                clave = txtContrasenia.Text.Trim(),
 
-                string dataProhibicion = JsonConvert.SerializeObject(data);
+            };
 
-                this.Enabled = false;
-                (DProhibicionVisita dataRespuesta, string errorResponse) = await nProhibicionVisita.CrearProhibicion(dataProhibicion);
-                this.Enabled = true;
+            string dataUsuario = JsonConvert.SerializeObject(data);
 
-                if (dataRespuesta != null)
-                {
-                    MessageBox.Show("El usuario se guardo correctamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Enabled = false;
+            (DUsuario dataRespuesta, string errorResponse) = await nUsuario.CrearUsuario(dataUsuario);
+            this.Enabled = true;
 
-                }
-                else
-                {
-                    MessageBox.Show(errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+            if (dataRespuesta != null)
+            {
+                MessageBox.Show("El usuario se guardo correctamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                this.DialogResult = DialogResult.OK; // Para indicar que cerró bien
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
 
             
-            //FIN NUEVO............................................................
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

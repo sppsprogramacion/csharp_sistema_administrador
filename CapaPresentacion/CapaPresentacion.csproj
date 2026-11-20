@@ -64,7 +64,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>restriccion- icono.ico</ApplicationIcon>
+    <ApplicationIcon>icono_administrador.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
@@ -207,6 +207,12 @@
     <Compile Include="FormSabanaInternos.Designer.cs">
       <DependentUpon>FormSabanaInternos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUsuarioEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarioEditar.Designer.cs">
+      <DependentUpon>FormUsuarioEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUsuarioNuevo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     <EmbeddedResource Include="FormSabanaInternos.resx">
       <DependentUpon>FormSabanaInternos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarioEditar.resx">
+      <DependentUpon>FormUsuarioEditar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormUsuarioNuevo.resx">
       <DependentUpon>FormUsuarioNuevo.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +362,9 @@
     <None Include="Resources\buscar.png" />
     <None Include="Resources\buscar2.png" />
     <None Include="Resources\usuario21.png" />
+    <None Include="Resources\administrador.png" />
+    <None Include="Resources\icono_administrador_transparente.png" />
+    <Content Include="icono_administrador.ico" />
     <Content Include="restriccion- icono.ico" />
     <Content Include="restriccion-icono.ico" />
     <Content Include="SqlServerTypes\readme.htm" />

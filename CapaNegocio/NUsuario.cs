@@ -13,7 +13,7 @@ namespace CapaNegocio
     {
 
         //CREAR USUARIO
-        public async Task<(DUsuario, string error)> CrearProhibicion(string usuarioData)
+        public async Task<(DUsuario, string error)> CrearUsuario(string usuarioData)
         {
             IUsuarioDao usuarioDao = new UsuarioDaoImplement(); 
             (DUsuario usuarioREsponse, string errorResponse) = await usuarioDao.CrearUsuario(usuarioData);

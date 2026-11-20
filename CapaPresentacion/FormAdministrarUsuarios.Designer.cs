@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtgUsuarios = new System.Windows.Forms.DataGridView();
             this.txtDni = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnVerActivosPorOrganismo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAgregarRol = new System.Windows.Forms.Button();
+            this.btnEditarUsuario = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnQuitarRol = new System.Windows.Forms.Button();
             this.txtIdUsuarioRol = new System.Windows.Forms.TextBox();
@@ -232,6 +232,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEditarUsuario);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtIdUsuario);
             this.groupBox1.Controls.Add(this.btnDeshabilitarUsuario);
@@ -355,7 +356,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnAgregarRol);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btnQuitarRol);
             this.groupBox2.Controls.Add(this.txtIdUsuarioRol);
@@ -369,19 +369,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ROLES DEL USUARIO";
             // 
-            // btnAgregarRol
+            // btnEditarUsuario
             // 
-            this.btnAgregarRol.BackColor = System.Drawing.Color.Indigo;
-            this.btnAgregarRol.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAgregarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRol.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarRol.Location = new System.Drawing.Point(163, 191);
-            this.btnAgregarRol.Name = "btnAgregarRol";
-            this.btnAgregarRol.Size = new System.Drawing.Size(127, 40);
-            this.btnAgregarRol.TabIndex = 119;
-            this.btnAgregarRol.Text = "AGREGAR ROL";
-            this.btnAgregarRol.UseVisualStyleBackColor = false;
+            this.btnEditarUsuario.BackColor = System.Drawing.Color.Indigo;
+            this.btnEditarUsuario.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnEditarUsuario.Location = new System.Drawing.Point(191, 191);
+            this.btnEditarUsuario.Name = "btnEditarUsuario";
+            this.btnEditarUsuario.Size = new System.Drawing.Size(127, 40);
+            this.btnEditarUsuario.TabIndex = 119;
+            this.btnEditarUsuario.Text = "EDITAR USUARIO";
+            this.btnEditarUsuario.UseVisualStyleBackColor = false;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
             // 
             // label5
             // 
@@ -422,8 +423,8 @@
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoles.Location = new System.Drawing.Point(6, 19);
             this.dgvRoles.Name = "dgvRoles";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRoles.Size = new System.Drawing.Size(478, 119);
             this.dgvRoles.TabIndex = 70;
             this.dgvRoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRoles_KeyDown);
@@ -461,6 +462,7 @@
             this.btnNuevoUsuario.TabIndex = 120;
             this.btnNuevoUsuario.Text = "NUEVO USUARIO";
             this.btnNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
             // FormAdministrarUsuarios
             // 
@@ -529,7 +531,7 @@
         private System.Windows.Forms.TextBox txtIdUsuarioRol;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtRol;
-        private System.Windows.Forms.Button btnAgregarRol;
+        private System.Windows.Forms.Button btnEditarUsuario;
         private System.Windows.Forms.Button btnNuevoUsuario;
     }
 }

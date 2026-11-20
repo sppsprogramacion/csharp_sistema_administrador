@@ -301,7 +301,7 @@ namespace DAOImplement
         //FIN DESHABILITAR UN USUARIO
         //------------------------------------------------------------------------------------
 
-        //DESHABILITAR UN USUARIO
+        //DESHABILITAR UN ROL DEL USUARIO
         public async Task<(bool, string error)> DeshabilitarRolDelUsuario(int idUsuarioRol)
         {
             string token = SessionManager.Token; // Aquí pones tu token real
@@ -356,7 +356,7 @@ namespace DAOImplement
                 return (false, $"Error inesperado: {ex.Message}");
             }
         }
-        //FIN DESHABILITAR UN USUARIO
+        //FIN DESHABILITAR UN ROL DEL USUARIO
         //------------------------------------------------------------------------------------
 
         //BUSCAR USUARIO MI CUENTA

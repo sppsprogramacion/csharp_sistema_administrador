@@ -96,7 +96,7 @@ namespace CapaPresentacion
 
 
 
-        private async void dtgvProhibiciones_KeyDown(object sender, KeyEventArgs e)
+        private void dtgvProhibiciones_KeyDown(object sender, KeyEventArgs e)
         {
             //AL PRESIONAR ENTER MOSTRAR
             if (e.KeyCode == Keys.Enter)
@@ -121,52 +121,7 @@ namespace CapaPresentacion
 
 
                         //CARGAR ROLES
-
-                        if (this.txtIdUsuario.Text == string.Empty)
-                        {
-                            MessageBox.Show("Debe seleccionar un usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            NUsuario nUsuario = new NUsuario();
-                            this.Enabled = false;
-                            (List<DUsuarioRol> listaUsuarioRolesRespnse, string errorResponse) = await nUsuario.ListaUsuarioRoles(Convert.ToInt32(this.txtIdUsuario.Text));
-                            this.Enabled = true;
-
-                            if (listaUsuarioRolesRespnse == null)
-                            {
-                                MessageBox.Show(errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                return;
-                            }
-
-
-                            var datosFiltrados = listaUsuarioRolesRespnse
-                            .Select(c => new
-                            {
-                                Id = c.id_usuario_rol,
-                                Rol = c.rol_id,
-                                FechaAlta = c.fecha_alta,
-                                RolActivo = c.activo
-
-                            })
-                            .ToList();
-
-                            dgvRoles.DataSource = datosFiltrados;
-
-                            if (listaUsuarioRolesRespnse.Count == 0)
-                            {
-                                MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
-                            }
-                            else
-                            {
-
-                                dgvRoles.Columns[0].Width = 50;
-                                dgvRoles.Columns[1].Width = 150;
-                                dgvRoles.Columns[2].Width = 80;
-                                dgvRoles.Columns[2].Width = 80;
-                            }
-                        }
+                        this.CargarRolesUsuario();
 
                     }
                     else
@@ -238,7 +193,7 @@ namespace CapaPresentacion
 
         //------------------------------------------------------------------------------------
 
-        //METODO PARA OBTENER LA LISTA DE USUARIOS DE RESTRICCION
+        //METODO PARA OBTENER LA LISTA DE USUARIOS
         private void CargarDataGridUsuarios(List<DUsuario> listaUsuarios)
         {
             //NUsuario nUsuario = new NUsuario();
@@ -273,13 +228,13 @@ namespace CapaPresentacion
             else
             {
                 dtgUsuarios.Columns[0].Width = 50;
-                dtgUsuarios.Columns[1].Width = 150;
-                dtgUsuarios.Columns[2].Width = 150;
-                dtgUsuarios.Columns[3].Width = 80;
+                dtgUsuarios.Columns[1].Width = 160;
+                dtgUsuarios.Columns[2].Width = 80;
+                dtgUsuarios.Columns[3].Width = 60;
                 dtgUsuarios.Columns[4].Width = 80;
-                dtgUsuarios.Columns[5].Width = 80;
-                dtgUsuarios.Columns[6].Width = 150;
-                dtgUsuarios.Columns[7].Width = 80;
+                dtgUsuarios.Columns[5].Width = 110;
+                dtgUsuarios.Columns[6].Width = 90;
+                dtgUsuarios.Columns[7].Width = 150;
                 dtgUsuarios.Columns[8].Width = 180;
             }
         }
@@ -334,52 +289,7 @@ namespace CapaPresentacion
                     MessageBox.Show("Se quito correctamente el rol del usuario", "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //CARGAR ROLES
-
-                    if (this.txtIdUsuario.Text == string.Empty)
-                    {
-                        MessageBox.Show("Debe seleccionar un usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        this.Enabled = false;
-                        (List<DUsuarioRol> listaUsuarioRolesRespnse, string errorResponse2) = await nUsuario.ListaUsuarioRoles(Convert.ToInt32(this.txtIdUsuario.Text));
-                        this.Enabled = true;
-
-                        if (listaUsuarioRolesRespnse == null)
-                        {
-                            MessageBox.Show(errorResponse2, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-
-                        var datosFiltrados = listaUsuarioRolesRespnse
-                        .Select(c => new
-                        {
-                            Id = c.id_usuario_rol,
-                            Rol = c.rol_id,
-                            FechaAlta = c.fecha_alta,
-                            RolActivo = c.activo
-
-                        })
-                        .ToList();
-
-                        dgvRoles.DataSource = datosFiltrados;
-
-                        if (listaUsuarioRolesRespnse.Count == 0)
-                        {
-                            MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
-                        else
-                        {
-
-                            dgvRoles.Columns[0].Width = 50;
-                            dgvRoles.Columns[1].Width = 150;
-                            dgvRoles.Columns[2].Width = 80;
-                            dgvRoles.Columns[2].Width = 80;
-                        }
-                    }
-
+                    this.CargarRolesUsuario();
 
                     txtIdUsuarioRol.Text = string.Empty;
                     txtRol.Text = string.Empty;
@@ -395,6 +305,100 @@ namespace CapaPresentacion
             {
                 // Manejo de otros tipos de errores MySQL
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+        //CARGAR ROLES DEL USUARIO
+        private async void CargarRolesUsuario()
+        {
+            NUsuario nUsuario = new NUsuario();
+
+            if (this.txtIdUsuario.Text == string.Empty)
+            {
+                MessageBox.Show("Debe seleccionar un usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.Enabled = false;
+                (List<DUsuarioRol> listaUsuarioRolesRespnse, string errorResponse2) = await nUsuario.ListaUsuarioRoles(Convert.ToInt32(this.txtIdUsuario.Text));
+                this.Enabled = true;
+
+                if (listaUsuarioRolesRespnse == null)
+                {
+                    MessageBox.Show(errorResponse2, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                var datosFiltrados = listaUsuarioRolesRespnse
+                .Select(c => new
+                {
+                    Id = c.id_usuario_rol,
+                    Rol = c.rol_id,
+                    FechaAlta = c.fecha_alta,
+                    RolActivo = c.activo
+
+                })
+                .ToList();
+
+                dgvRoles.DataSource = datosFiltrados;
+
+                if (listaUsuarioRolesRespnse.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+
+                    dgvRoles.Columns[0].Width = 50;
+                    dgvRoles.Columns[1].Width = 150;
+                    dgvRoles.Columns[2].Width = 80;
+                    dgvRoles.Columns[2].Width = 80;
+                }
+            }
+        }
+
+        //FIN CARGAR ROLES DEL USUARIO
+        //---------------------------------------------------------------------
+
+
+        private async void btnNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            using (FormUsuarioNuevo formInternos = new FormUsuarioNuevo())
+            {
+                // Aquí se abre el FormularioB
+                if (formInternos.ShowDialog() == DialogResult.OK)
+                {
+                    // Recién después de cerrar FormularioB, puedo leer el dato
+                    NUsuario nUsuario = new NUsuario();
+                    this.Enabled = false;
+                    (List<DUsuario> listaUsuariosResponse, string errorResponse) = await nUsuario.ListaUsuariosActivos();
+                    this.Enabled = true;
+
+                    if (listaUsuariosResponse == null)
+                    {
+                        MessageBox.Show(errorResponse, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+
+                    this.CargarDataGridUsuarios(listaUsuariosResponse);
+                }
+            }
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            using (FormUsuarioEditar formInternos = new FormUsuarioEditar(Convert.ToInt32(txtIdUsuario.Text)))
+            {
+                // Aquí se abre el FormularioB
+                if (formInternos.ShowDialog() == DialogResult.OK)
+                {
+                    
+                    //this.CargarDataGridUsuarios(listaUsuariosResponse);
+                }
             }
         }
     }
