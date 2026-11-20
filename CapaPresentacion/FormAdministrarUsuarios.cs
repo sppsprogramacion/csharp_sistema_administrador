@@ -111,7 +111,6 @@ namespace CapaPresentacion
                     if (idUsuario > 0)
                     {
                         txtIdUsuario.Text = idUsuario.ToString();
-                        txtRoles.Text = dtgUsuarios.CurrentRow.Cells["Roles"].Value.ToString();
                         txtApellidoNombre.Text = dtgUsuarios.CurrentRow.Cells["ApellidoNombre"].Value.ToString();
                         txtDni.Text = dtgUsuarios.CurrentRow.Cells["Dni"].Value.ToString();
                         txtLegajo.Text = dtgUsuarios.CurrentRow.Cells["Legajo"].Value.ToString();
@@ -220,7 +219,6 @@ namespace CapaPresentacion
                     txtEmail.Text = string.Empty;
                     txtTelefono.Text = string.Empty;
                     txtOrganismo.Text = string.Empty;
-                    txtRoles.Text = string.Empty;
 
                 }
                 else
