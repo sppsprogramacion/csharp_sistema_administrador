@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtgUsuarios = new System.Windows.Forms.DataGridView();
             this.txtDni = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtOrganismo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEditarUsuario = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.btnDeshabilitarUsuario = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnVerActivosPorOrganismo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnEditarUsuario = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnQuitarRol = new System.Windows.Forms.Button();
             this.txtIdUsuarioRol = new System.Windows.Forms.TextBox();
@@ -257,6 +257,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "USUARIO";
             // 
+            // btnEditarUsuario
+            // 
+            this.btnEditarUsuario.BackColor = System.Drawing.Color.Indigo;
+            this.btnEditarUsuario.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnEditarUsuario.Location = new System.Drawing.Point(184, 191);
+            this.btnEditarUsuario.Name = "btnEditarUsuario";
+            this.btnEditarUsuario.Size = new System.Drawing.Size(134, 40);
+            this.btnEditarUsuario.TabIndex = 119;
+            this.btnEditarUsuario.Text = "EDITAR USUARIO";
+            this.btnEditarUsuario.UseVisualStyleBackColor = false;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -298,7 +313,7 @@
             this.btnVerUsuariosActivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerUsuariosActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerUsuariosActivos.ForeColor = System.Drawing.Color.White;
-            this.btnVerUsuariosActivos.Location = new System.Drawing.Point(214, 3);
+            this.btnVerUsuariosActivos.Location = new System.Drawing.Point(627, 3);
             this.btnVerUsuariosActivos.Name = "btnVerUsuariosActivos";
             this.btnVerUsuariosActivos.Size = new System.Drawing.Size(160, 40);
             this.btnVerUsuariosActivos.TabIndex = 111;
@@ -313,7 +328,7 @@
             this.btnVerUsuariosInactivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerUsuariosInactivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerUsuariosInactivos.ForeColor = System.Drawing.Color.White;
-            this.btnVerUsuariosInactivos.Location = new System.Drawing.Point(379, 3);
+            this.btnVerUsuariosInactivos.Location = new System.Drawing.Point(793, 3);
             this.btnVerUsuariosInactivos.Name = "btnVerUsuariosInactivos";
             this.btnVerUsuariosInactivos.Size = new System.Drawing.Size(165, 40);
             this.btnVerUsuariosInactivos.TabIndex = 112;
@@ -324,7 +339,7 @@
             // cmbOrganismos
             // 
             this.cmbOrganismos.FormattingEnabled = true;
-            this.cmbOrganismos.Location = new System.Drawing.Point(567, 21);
+            this.cmbOrganismos.Location = new System.Drawing.Point(174, 21);
             this.cmbOrganismos.Name = "cmbOrganismos";
             this.cmbOrganismos.Size = new System.Drawing.Size(260, 21);
             this.cmbOrganismos.TabIndex = 113;
@@ -333,7 +348,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(565, 3);
+            this.label11.Location = new System.Drawing.Point(173, 3);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 15);
             this.label11.TabIndex = 114;
@@ -346,7 +361,7 @@
             this.btnVerActivosPorOrganismo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerActivosPorOrganismo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerActivosPorOrganismo.ForeColor = System.Drawing.Color.White;
-            this.btnVerActivosPorOrganismo.Location = new System.Drawing.Point(839, 3);
+            this.btnVerActivosPorOrganismo.Location = new System.Drawing.Point(446, 3);
             this.btnVerActivosPorOrganismo.Name = "btnVerActivosPorOrganismo";
             this.btnVerActivosPorOrganismo.Size = new System.Drawing.Size(175, 40);
             this.btnVerActivosPorOrganismo.TabIndex = 115;
@@ -368,21 +383,6 @@
             this.groupBox2.TabIndex = 116;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ROLES DEL USUARIO";
-            // 
-            // btnEditarUsuario
-            // 
-            this.btnEditarUsuario.BackColor = System.Drawing.Color.Indigo;
-            this.btnEditarUsuario.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEditarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnEditarUsuario.Location = new System.Drawing.Point(191, 191);
-            this.btnEditarUsuario.Name = "btnEditarUsuario";
-            this.btnEditarUsuario.Size = new System.Drawing.Size(127, 40);
-            this.btnEditarUsuario.TabIndex = 119;
-            this.btnEditarUsuario.Text = "EDITAR USUARIO";
-            this.btnEditarUsuario.UseVisualStyleBackColor = false;
-            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
             // 
             // label5
             // 
@@ -423,8 +423,8 @@
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoles.Location = new System.Drawing.Point(6, 19);
             this.dgvRoles.Name = "dgvRoles";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRoles.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoles.Size = new System.Drawing.Size(478, 119);
             this.dgvRoles.TabIndex = 70;
             this.dgvRoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRoles_KeyDown);

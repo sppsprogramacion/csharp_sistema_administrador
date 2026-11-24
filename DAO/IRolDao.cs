@@ -9,7 +9,7 @@ namespace DAO
 {
     public interface IRolDao
     {
-        Task<(DRol, string error)> BuscarRolXId(int idRol);
+        Task<(DRol, string error)> BuscarRolXId(string idRol);
         Task<(List<DRol>, string error)> listaRoles();
     }
 }

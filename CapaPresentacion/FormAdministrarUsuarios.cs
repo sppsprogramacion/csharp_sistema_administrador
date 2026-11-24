@@ -152,7 +152,7 @@ namespace CapaPresentacion
 
                 if (respuestaEditar)
                 {
-                    MessageBox.Show("Se quito correctamente al usuario del sistema", "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se deshabilito correctamente al usuario", "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //buscar lista actualizada
                     this.Enabled = false;
@@ -389,15 +389,44 @@ namespace CapaPresentacion
             }
         }
 
-        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        private async void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            using (FormUsuarioEditar formInternos = new FormUsuarioEditar(Convert.ToInt32(txtIdUsuario.Text)))
+            using (FormUsuarioEditar formUsuarioEditar = new FormUsuarioEditar(Convert.ToInt32(txtIdUsuario.Text)))
             {
                 // Aquí se abre el FormularioB
-                if (formInternos.ShowDialog() == DialogResult.OK)
+                if (formUsuarioEditar.ShowDialog() == DialogResult.OK)
                 {
+                    bool editado = formUsuarioEditar.isEditadoGlobal;
+
+                    if (editado)
+                    {
+                        txtIdUsuario.Text = string.Empty;
+                        txtApellidoNombre.Text = string.Empty;
+                        txtDni.Text = string.Empty;
+                        txtLegajo.Text = string.Empty;
+                        txtSexo.Text = string.Empty;
+                        txtEmail.Text = string.Empty;
+                        txtTelefono.Text = string.Empty;
+                        txtOrganismo.Text = string.Empty;
+
+                        dgvRoles.DataSource = null;
+
+                        //RECARGAR LISA USUARIOS
+                        NUsuario nUsuario = new NUsuario();
+                        this.Enabled = false;
+                        (List<DUsuario> listaUsuariosResponse, string errorResponse) = await nUsuario.ListaUsuariosActivos();
+                        this.Enabled = true;
+
+                        if (listaUsuariosResponse == null)
+                        {
+                            MessageBox.Show(errorResponse, "Sistema Administrador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return;
+                        }
+
+
+                        this.CargarDataGridUsuarios(listaUsuariosResponse);
+                    }
                     
-                    //this.CargarDataGridUsuarios(listaUsuariosResponse);
                 }
             }
         }

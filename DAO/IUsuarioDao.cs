@@ -13,9 +13,11 @@ namespace DAO
         Task<(DUsuarioRol, string error)> CrearRol(string usuarioRol);
         Task<(bool, string error)> EditarUsuario(int id, string usuarioData);
 
+        Task<(bool, string error)> HabilitarUsuario(int idUsuario);
         Task<(bool, string error)> DeshabilitarUsuario(int idUsuario);
         Task<(bool, string error)> DeshabilitarRolDelUsuario(int idUsuarioRol);
         Task<(bool, string error)> CambiarMiPassword(string dataEditar);
+        Task<(bool, string error)> CambiarPasswordDeUsuario(int idUsuario, string dataEditar);
         Task<(DUsuario, string error)> BuscarUsuarioMicuenta();
         Task<(DUsuario, string error)> BuscarUsuarioXId(int idUsuario);
         Task<(List<DUsuario>, string error)> ListaUsuariosActivos();

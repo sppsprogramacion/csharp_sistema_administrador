@@ -20,18 +20,32 @@ namespace CapaNegocio
 
             return (usuarioREsponse, errorResponse);
         }
-        //FIN CREAR USUARIO..................................
+        //FIN CREAR USUARIO
+        //.............................................................
 
-        //EDITAR PROHIBICION
-        public async Task<(bool, string error)> EditarUsuario(int id, string prohibicioVisita)
+
+        //CREAR UN ROL AL USUARIO
+        public async Task<(DUsuarioRol, string error)> CrearRol(string usuarioRolData)
         {
-            IProhibicionVisitaDao prohibicionVisitaDao = new ProhibicinVisitaDaoImpl();
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement();
+            (DUsuarioRol usuarioRolResponse, string errorResponse) = await usuarioDao.CrearRol(usuarioRolData);
 
-            (bool prohibicionResponse, string error) = await prohibicionVisitaDao.EditarProhibicionVisita(id, prohibicioVisita);
-
-            return (prohibicionResponse, error);
+            return (usuarioRolResponse, errorResponse);
         }
-        //FIN EDITAR PROHIBICION..................................
+        //FIN CREAR UN ROL AL USUARIO
+        //.............................................................
+
+        //EDITAR USUARIO
+        public async Task<(bool, string error)> EditarUsuario(int id, string usuarioData)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement(); ;
+
+            (bool usuarioResponse, string error) = await usuarioDao.EditarUsuario(id, usuarioData);
+
+            return (usuarioResponse, error);
+        }
+        //FIN EDITAR PROHIBUSUARIO
+        //...........................................................
 
 
         //CAMBIAR MI PASSWORD
@@ -45,6 +59,34 @@ namespace CapaNegocio
         }
         //FIN CAMBIAR MI PASSWORD
         //..........................................................................................
+
+
+        //EDITAR PASSWORD DE UN USUARIO
+        public async Task<(bool, string error)> CambiarPasswordDeUsuario(int id, string usuarioData)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement(); ;
+
+            (bool usuarioResponse, string error) = await usuarioDao.CambiarPasswordDeUsuario(id, usuarioData);
+
+            return (usuarioResponse, error);
+        }
+        //FIN EDITAR PASSWORD DE UN USUARIO
+        //...........................................................
+
+
+        //HABILITAR USUARIO
+        public async Task<(bool, string error)> HabilitarUsuario(int idUsuario)
+        {
+            IUsuarioDao usuarioDao = new UsuarioDaoImplement();
+
+            (bool edicionResponse, string error) = await usuarioDao.HabilitarUsuario(idUsuario);
+
+            return (edicionResponse, error);
+        }
+        //FIN HABILITAR USUARIO
+        //..........................................................................................
+
+
 
         //DESHABILITAR USUARIO
         public async Task<(bool, string error)> DeshabilitarUsuario(int idUsuario)

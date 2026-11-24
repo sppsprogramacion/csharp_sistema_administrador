@@ -57,6 +57,7 @@
     <Compile Include="NProhibicionVisitaAnticipada.cs" />
     <Compile Include="NProvincia.cs" />
     <Compile Include="NRegistroDiario.cs" />
+    <Compile Include="NRol.cs" />
     <Compile Include="NSexo.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="NVisitaInterno.cs" />

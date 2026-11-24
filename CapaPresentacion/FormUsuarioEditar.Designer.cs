@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuarioEditar));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -59,21 +60,18 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnQuitarRol = new System.Windows.Forms.Button();
             this.txtIdUsuarioRol = new System.Windows.Forms.TextBox();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.txtRol = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGuardarRol = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCancelarCambiarContrasenia = new System.Windows.Forms.Button();
+            this.btnGuardarContrasenia = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cmbOrganismoHabilitar = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnHabilitarUsuario = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -84,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblEstado);
             this.groupBox1.Controls.Add(this.txtIdUsuario);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -110,6 +109,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS PRINCIPALES";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.Color.Indigo;
+            this.lblEstado.Location = new System.Drawing.Point(6, 266);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(87, 20);
+            this.lblEstado.TabIndex = 140;
+            this.lblEstado.Text = "ESTADO...";
             // 
             // txtIdUsuario
             // 
@@ -143,6 +153,7 @@
             this.btnCancelar.TabIndex = 137;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -156,6 +167,7 @@
             this.btnGuardar.TabIndex = 136;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cmbSexo
             // 
@@ -319,7 +331,7 @@
             // 
             this.txtContraseniaRepetir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContraseniaRepetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContraseniaRepetir.Location = new System.Drawing.Point(11, 87);
+            this.txtContraseniaRepetir.Location = new System.Drawing.Point(11, 83);
             this.txtContraseniaRepetir.Name = "txtContraseniaRepetir";
             this.txtContraseniaRepetir.Size = new System.Drawing.Size(260, 21);
             this.txtContraseniaRepetir.TabIndex = 119;
@@ -328,7 +340,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 20);
+            this.label11.Location = new System.Drawing.Point(6, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(134, 15);
             this.label11.TabIndex = 116;
@@ -338,7 +350,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(8, 68);
+            this.label12.Location = new System.Drawing.Point(8, 64);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(146, 15);
             this.label12.TabIndex = 118;
@@ -348,7 +360,7 @@
             // 
             this.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContrasenia.Location = new System.Drawing.Point(9, 39);
+            this.txtContrasenia.Location = new System.Drawing.Point(9, 40);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(260, 21);
             this.txtContrasenia.TabIndex = 117;
@@ -366,7 +378,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btnQuitarRol);
             this.groupBox2.Controls.Add(this.txtIdUsuarioRol);
             this.groupBox2.Controls.Add(this.dgvRoles);
             this.groupBox2.Controls.Add(this.label10);
@@ -387,19 +398,6 @@
             this.label2.Size = new System.Drawing.Size(108, 15);
             this.label2.TabIndex = 118;
             this.label2.Text = "ID USUARIO-ROL:";
-            // 
-            // btnQuitarRol
-            // 
-            this.btnQuitarRol.BackColor = System.Drawing.Color.Crimson;
-            this.btnQuitarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitarRol.ForeColor = System.Drawing.Color.White;
-            this.btnQuitarRol.Location = new System.Drawing.Point(324, 215);
-            this.btnQuitarRol.Name = "btnQuitarRol";
-            this.btnQuitarRol.Size = new System.Drawing.Size(182, 40);
-            this.btnQuitarRol.TabIndex = 115;
-            this.btnQuitarRol.Text = "QUITAR ROL";
-            this.btnQuitarRol.UseVisualStyleBackColor = false;
             // 
             // txtIdUsuarioRol
             // 
@@ -443,135 +441,120 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnGuardarRol);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.cmbRoles);
             this.groupBox3.Location = new System.Drawing.Point(538, 328);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(287, 156);
+            this.groupBox3.Size = new System.Drawing.Size(287, 145);
             this.groupBox3.TabIndex = 118;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "AGREGAR ROL";
             // 
-            // button1
+            // btnGuardarRol
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(172, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 40);
-            this.button1.TabIndex = 138;
-            this.button1.Text = "CANCELAR";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Green;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(71, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 40);
-            this.button2.TabIndex = 137;
-            this.button2.Text = "GUARDAR";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnGuardarRol.BackColor = System.Drawing.Color.Green;
+            this.btnGuardarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarRol.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarRol.Location = new System.Drawing.Point(170, 86);
+            this.btnGuardarRol.Name = "btnGuardarRol";
+            this.btnGuardarRol.Size = new System.Drawing.Size(98, 40);
+            this.btnGuardarRol.TabIndex = 137;
+            this.btnGuardarRol.Text = "GUARDAR";
+            this.btnGuardarRol.UseVisualStyleBackColor = false;
+            this.btnGuardarRol.Click += new System.EventHandler(this.btnGuardarRol_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.btnCancelarCambiarContrasenia);
+            this.groupBox4.Controls.Add(this.btnGuardarContrasenia);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txtContrasenia);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.txtContraseniaRepetir);
-            this.groupBox4.Location = new System.Drawing.Point(538, 5);
+            this.groupBox4.Location = new System.Drawing.Point(538, 152);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(287, 184);
+            this.groupBox4.Size = new System.Drawing.Size(287, 165);
             this.groupBox4.TabIndex = 119;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "CAMBIAR CONTRASEÑA";
             // 
-            // button3
+            // btnCancelarCambiarContrasenia
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkOrange;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(173, 127);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 40);
-            this.button3.TabIndex = 123;
-            this.button3.Text = "CANCELAR";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCancelarCambiarContrasenia.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnCancelarCambiarContrasenia.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCancelarCambiarContrasenia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarCambiarContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarCambiarContrasenia.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarCambiarContrasenia.Location = new System.Drawing.Point(173, 112);
+            this.btnCancelarCambiarContrasenia.Name = "btnCancelarCambiarContrasenia";
+            this.btnCancelarCambiarContrasenia.Size = new System.Drawing.Size(98, 40);
+            this.btnCancelarCambiarContrasenia.TabIndex = 123;
+            this.btnCancelarCambiarContrasenia.Text = "CANCELAR";
+            this.btnCancelarCambiarContrasenia.UseVisualStyleBackColor = false;
+            this.btnCancelarCambiarContrasenia.Click += new System.EventHandler(this.btnCancelarCambiarContrasenia_Click);
             // 
-            // button4
+            // btnGuardarContrasenia
             // 
-            this.button4.BackColor = System.Drawing.Color.Green;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(72, 126);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(98, 40);
-            this.button4.TabIndex = 122;
-            this.button4.Text = "GUARDAR";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnGuardarContrasenia.BackColor = System.Drawing.Color.Green;
+            this.btnGuardarContrasenia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarContrasenia.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarContrasenia.Location = new System.Drawing.Point(72, 111);
+            this.btnGuardarContrasenia.Name = "btnGuardarContrasenia";
+            this.btnGuardarContrasenia.Size = new System.Drawing.Size(98, 40);
+            this.btnGuardarContrasenia.TabIndex = 122;
+            this.btnGuardarContrasenia.Text = "GUARDAR";
+            this.btnGuardarContrasenia.UseVisualStyleBackColor = false;
+            this.btnGuardarContrasenia.Click += new System.EventHandler(this.btnGuardarContrasenia_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.cmbOrganismoHabilitar);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Location = new System.Drawing.Point(538, 195);
+            this.groupBox5.Controls.Add(this.btnHabilitarUsuario);
+            this.groupBox5.Location = new System.Drawing.Point(537, 5);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(287, 123);
+            this.groupBox5.Size = new System.Drawing.Size(287, 130);
             this.groupBox5.TabIndex = 124;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "HABILITAR USUARIO";
             // 
-            // cmbOrganismoHabilitar
+            // btnHabilitarUsuario
             // 
-            this.cmbOrganismoHabilitar.FormattingEnabled = true;
-            this.cmbOrganismoHabilitar.Location = new System.Drawing.Point(11, 36);
-            this.cmbOrganismoHabilitar.Name = "cmbOrganismoHabilitar";
-            this.cmbOrganismoHabilitar.Size = new System.Drawing.Size(258, 21);
-            this.cmbOrganismoHabilitar.TabIndex = 136;
+            this.btnHabilitarUsuario.BackColor = System.Drawing.Color.Green;
+            this.btnHabilitarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHabilitarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitarUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnHabilitarUsuario.Location = new System.Drawing.Point(12, 58);
+            this.btnHabilitarUsuario.Name = "btnHabilitarUsuario";
+            this.btnHabilitarUsuario.Size = new System.Drawing.Size(257, 49);
+            this.btnHabilitarUsuario.TabIndex = 122;
+            this.btnHabilitarUsuario.Text = "HABILITAR USUARIO";
+            this.btnHabilitarUsuario.UseVisualStyleBackColor = false;
+            this.btnHabilitarUsuario.Click += new System.EventHandler(this.btnHabilitarUsuario_Click);
             // 
-            // label4
+            // btnCerrar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 15);
-            this.label4.TabIndex = 135;
-            this.label4.Text = "ORGANISMO";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Green;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(94, 69);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(175, 40);
-            this.button6.TabIndex = 122;
-            this.button6.Text = "HABILITAR USUARIO";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnCerrar.BackColor = System.Drawing.Color.White;
+            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.Red;
+            this.btnCerrar.Location = new System.Drawing.Point(732, 544);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(93, 45);
+            this.btnCerrar.TabIndex = 125;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FormUsuarioEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(911, 609);
+            this.ClientSize = new System.Drawing.Size(842, 609);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -592,7 +575,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -608,17 +590,15 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnQuitarRol;
         private System.Windows.Forms.TextBox txtIdUsuarioRol;
         private System.Windows.Forms.DataGridView dgvRoles;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGuardarRol;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCancelarCambiarContrasenia;
+        private System.Windows.Forms.Button btnGuardarContrasenia;
         private System.Windows.Forms.ComboBox cmbSexo;
         private System.Windows.Forms.ComboBox cmbOrganismos;
         private System.Windows.Forms.TextBox txtDni;
@@ -640,8 +620,8 @@
         private System.Windows.Forms.TextBox txtIdUsuario;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox cmbOrganismoHabilitar;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnHabilitarUsuario;
+        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Label lblEstado;
     }
 }
