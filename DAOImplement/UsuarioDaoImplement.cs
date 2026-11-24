@@ -74,7 +74,7 @@ namespace DAOImplement
         //----------------------------------------------------------
 
 
-
+        //CREAR ROL DEL USUARIO
         public async Task<(DUsuarioRol, string error)> CrearRol(string usuarioRol)
         {
             string token = SessionManager.Token; // Aquí pones tu token real
@@ -124,7 +124,8 @@ namespace DAOImplement
                 return (null, $"Error inesperado: {ex.Message}");
             }
         }
-
+        //FIN CREAR ROL DEL USUARIO
+        //--------------------------------------------------------------------------------------
 
         //  EDITAR USUARIO
         public async Task<(bool, string error)> EditarUsuario(int id, string usuarioData)
@@ -182,7 +183,7 @@ namespace DAOImplement
             }
         }
         //FIN EDITAR USUARIO
-
+        //--------------------------------------------------------------------------------
 
 
         //CAMBIAR MI PASSWORD
@@ -301,6 +302,7 @@ namespace DAOImplement
         //FIN DESHABILITAR UN USUARIO
         //------------------------------------------------------------------------------------
 
+
         //DESHABILITAR UN ROL DEL USUARIO
         public async Task<(bool, string error)> DeshabilitarRolDelUsuario(int idUsuarioRol)
         {
@@ -359,6 +361,7 @@ namespace DAOImplement
         //FIN DESHABILITAR UN ROL DEL USUARIO
         //------------------------------------------------------------------------------------
 
+
         //BUSCAR USUARIO MI CUENTA
         public async Task<(DUsuario, string error)> BuscarUsuarioMicuenta()
         {
@@ -407,6 +410,7 @@ namespace DAOImplement
         //FIN BUSCAR USUARIO MI CUENTA
         //------------------------------------------------------------------------------------
 
+
         //BUSCAR USUARIO POR ID
         public async Task<(DUsuario, string error)> BuscarUsuarioXId(int idUsuario)
         {
@@ -454,6 +458,7 @@ namespace DAOImplement
         }
         //FIN BUSCAR USUARIO POR ID
         //---------------------------------------------------------------------------------------
+
 
         //LISTA DE USUARIO ACTIVOS 
         public async Task<(List<DUsuario>, string error)> ListaUsuariosActivos()

@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaDaoImpl.cs" />
     <Compile Include="RegistroDiarioDaoImpl.cs" />
+    <Compile Include="RolDaoImplement.cs" />
     <Compile Include="SexoDaoImpl.cs" />
     <Compile Include="UsuarioDaoImplement.cs" />
     <Compile Include="VisitaInternoDaoImpl.cs" />

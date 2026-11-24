@@ -29,7 +29,39 @@ namespace CapaPresentacion
             //// Ajustar el tamaño del formulario            
             FormularioAyudas.AjustarFormulario(this);
 
+            //CARGAR COMBO ORGANISMO
+            NOrganismo nOrganismo = new NOrganismo();
+            (List<DOrganismo> listaOrganismoResponse, string errorResponse1) = await nOrganismo.RetornarOrganismoDestinoTodos();
 
+            if (listaOrganismoResponse == null)
+            {
+                MessageBox.Show("Advertencia al cargar lista de Organismos: " + errorResponse1, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            cmbOrganismos.ValueMember = "id_organismo";
+            cmbOrganismos.DisplayMember = "organismo";
+            cmbOrganismos.DataSource = listaOrganismoResponse.ToArray();
+
+            cmbOrganismoHabilitar.ValueMember = "id_organismo";
+            cmbOrganismoHabilitar.DisplayMember = "organismo";
+            cmbOrganismoHabilitar.DataSource = listaOrganismoResponse.ToArray();
+
+            //Carga de combo sexo
+            NSexo nSexo = new NSexo();
+            (List<DSexo> listaSexo, string errorResponse2) = await nSexo.RetornarListaSexo();
+            if (listaSexo == null)
+            {
+                MessageBox.Show("Advertencia al cargar lista de sexo: " + errorResponse1, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            cmbSexo.ValueMember = "id_sexo";
+            cmbSexo.DisplayMember = "sexo";
+            cmbSexo.DataSource = listaSexo;
+
+
+            //CARGA DE DATOS DE USUARIO
             NUsuario nUsuario = new NUsuario();
             this.Enabled = false;
             (DUsuario usuarioResponse, string errorResponse) = await nUsuario.BuscarUsuarioXID(idUsduarioglobal);
@@ -99,7 +131,7 @@ namespace CapaPresentacion
 
                 if (listaUsuarioRolesRespnse.Count == 0)
                 {
-                    MessageBox.Show("No se encontraron registros", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No se encontraron registros de roles del usuario", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 else
