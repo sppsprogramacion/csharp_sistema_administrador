@@ -304,7 +304,7 @@ namespace DAOImplement
         //-------------------------------------------------------------------------------------------
 
 
-        //DESHABILITAR UN USUARIO
+        //HABILITAR UN USUARIO
         public async Task<(bool, string error)> HabilitarUsuario(int idUsuario)
         {
             string token = SessionManager.Token; // Aquí pones tu token real
@@ -359,7 +359,7 @@ namespace DAOImplement
                 return (false, $"Error inesperado: {ex.Message}");
             }
         }
-        //FIN DESHABILITAR UN USUARIO
+        //FIN HABILITAR UN USUARIO
         //------------------------------------------------------------------------------------
 
 

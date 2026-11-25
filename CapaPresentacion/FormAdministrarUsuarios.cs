@@ -251,7 +251,7 @@ namespace CapaPresentacion
                 if (dgvRoles.SelectedRows.Count > 0)
                 {
                     int idUsuarioRol;
-                    idUsuarioRol = Convert.ToInt32(dtgUsuarios.CurrentRow.Cells["Id"].Value.ToString());
+                    idUsuarioRol = Convert.ToInt32(dgvRoles.CurrentRow.Cells["Id"].Value.ToString());
 
                     if (idUsuarioRol > 0)
                     {
